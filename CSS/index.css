@@ -154,6 +154,25 @@ footer {
   border: 2px solid #333;
 }
 
-h2{
+.nombreart{
   color: white;
+  text-align: center;
+}
+
+.botoncompra{
+  text-align: center;
+}
+
+.tituloboton{
+  color: red;
+  background-color: black;
+  border-radius: 25px;
+  padding: 10px;
+
+}
+
+.tituloboton:hover{
+  color: red;
+  background-color: rgb(20, 20, 20);
+  cursor: pointer;
 }
