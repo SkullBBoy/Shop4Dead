@@ -1,6 +1,5 @@
 const botonesCompra = document.querySelectorAll('.tituloboton');
 let carrito = [];
-
 const carritoLocalStorage = localStorage.getItem('carrito');
 if (carritoLocalStorage) {
   carrito = JSON.parse(carritoLocalStorage);
@@ -28,13 +27,10 @@ function mostrarProductosEnCarrito() {
     carrito.forEach((producto) => {
       const productoDiv = document.createElement('div');
       productoDiv.classList.add('producto-carrito');
-
       const nombreProducto = document.createElement('h3');
       nombreProducto.textContent = producto.nombre;
-
       const precioProducto = document.createElement('p');
       precioProducto.textContent = `$${producto.precio}`;
-
       productoDiv.appendChild(nombreProducto);
       productoDiv.appendChild(precioProducto);
       contenedorProductos.appendChild(productoDiv);
@@ -45,16 +41,12 @@ function mostrarProductosEnCarrito() {
 function agregarAlCarrito(event) {
   const nombre = event.target.dataset.nombre;
   const precio = Number(event.target.dataset.precio);
-
   const producto = {
     nombre,
     precio,
   };
-
   carrito.push(producto);
-
   alert(`Se agregó "${nombre}" al carrito`);
-
   guardarCarritoEnLocalStorage();
   mostrarCantidadArticulos();
   mostrarProductosEnCarrito();
@@ -77,7 +69,6 @@ function comprar() {
 }
 
 const botonComprar = document.getElementById('btn-comprar');
-
 if (botonComprar) {
   botonComprar.addEventListener('click', comprar);
 }
