@@ -6,18 +6,33 @@
     <title>Shop4Dead</title>
     <link rel="stylesheet" href="../CSS/carrito.css">
     <link rel="shortcut icon" href="../IMG/Icono.jpg" type="image/x-icon">
+    
+
 </head>
 <body>
     <nav class="navbar">
         <ul>
             <li class="item"><a href="../index.html" id="firstItem"> <img src="../IMG/Icono.jpg" id="logo"> Shop4Dead</a></li>
             <li class="item"><a href="../index.html">Tienda</a></li>
-            <li class="item"><a href="carrito.html">Carrito</a></li>
+            <li class="item">
+                <a href="carrito.html">Carrito (<span id="contador-articulos">0</span>)</a>
+              </li>
             <li class="item"><a href="iniciarsesion.html" id="lastItem">Iniciar sesión</a></li>
         </ul>
     </nav>
 
-    
+    <div id="titulo">
+        <h1>★彡CARRITO彡★</h1>
+    </div>
+
+    <div id="articulos-carrito">
+        <div id="productos-carrito"></div>
+      
+        <div id="boton-comprar">
+            <button id="btn-comprar">COMPRAR</button>
+        </div>
+    </div>
+      
     
 
 
@@ -32,6 +47,6 @@
       </div>
   </footer>
 
-    <script src="./JS/main.js"></script>
+    <script src="../JS/main.js"></script>
 </body>
 </html>

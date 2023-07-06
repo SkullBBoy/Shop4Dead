@@ -6,73 +6,73 @@
     <title>Shop4Dead</title>
     <link rel="stylesheet" href="./CSS/index.css">
     <link rel="shortcut icon" href="./IMG/Icono.jpg" type="image/x-icon">
+    
 </head>
 <body>
-    <nav class="navbar">
-        <ul>
-            <li class="item"><a href="index.html" id="firstItem"> <img src="./IMG/Icono.jpg" id="logo"> Shop4Dead</a></li>
-            <li class="item"><a href="index.html">Tienda</a></li>
-            <li class="item"><a href="./HTML/carrito.html">Carrito</a></li>
-            <li class="item"><a href="./HTML/iniciarsesion.html" id="lastItem">Iniciar sesión</a></li>
-        </ul>
-    </nav>
+  <nav class="navbar">
+    <ul>
+        <li class="item"><a href="index.html" id="firstItem"> <img src="./IMG/Icono.jpg" id="logo"> Shop4Dead</a></li>
+        <li class="item"><a href="index.html">Tienda</a></li>
+        <li class="item">
+            <a href="./HTML/carrito.html">Carrito (<span id="contador-articulos">0</span>)</a>
+          </li>
+        <li class="item"><a href="./HTML/iniciarsesion.html" id="lastItem">Iniciar sesión</a></li>
+    </ul>
+</nav>
 
     
     <div id="titulo">
         <h1>★彡ARTÍCULOS EN VENTA彡★</h1>
     </div>
 
+    <button id="btnCargarArticulo">Cargar Artículo</button>
+    <div id="formularioCarga" style="display: none;">
+      <h2>Cargar Nuevo Artículo</h2>
+      <label for="nombreArticulo">Nombre del Artículo</label>
+      <input type="text" id="nombreArticulo">
+      <label for="precioArticulo">Precio del Artículo</label>
+      <input type="number" id="precioArticulo">
+      <button id="btnGuardarArticulo">Guardar Artículo</button>
+    </div>
+    
+
+
     <div id="articulos">
       <div class="articulo">
-       <img src="./IMG/Gancho.jpg" class="articulos-fotos" alt="">
-       <h2 class="nombreart">GANCHO DE SCORPION</h2>
-
-       <div class="botoncompra">
-        <button class="tituloboton">COMPRAR</button>
+        <img src="./IMG/Gancho.jpg" class="articulos-fotos" alt="">
+        <h2 class="nombreart">GANCHO DE SCORPION</h2>
+        <p class="precioart">$100</p>
+        <div class="botoncompra">
+          <button class="tituloboton" data-nombre="GANCHO DE SCORPION" data-precio="100">COMPRAR</button>
+        </div>
       </div>
-       
-
-
-      </div>
+      
 
       <div class="articulo">
         <img src="./IMG/portalgun.jpg" class="articulos-fotos" alt="">
         <h2 class="nombreart">PISTOLA DE PORTALES</h2>
-
-
+        <p class="precioart">$250</p>
         <div class="botoncompra">
-          <button class="tituloboton">COMPRAR</button>
+          <button class="tituloboton" data-nombre="PISTOLA DE PORTALES" data-precio="250">COMPRAR</button>
         </div>
-
-
-
-
-
       </div>
 
       <div class="articulo">
         <img src="./IMG/espadadiamante.jpg" class="articulos-fotos" alt="">
         <h2 class="nombreart">ESPADA DE DIAMANTE</h2>
-
+        <p class="precioart">$200</p>
         <div class="botoncompra">
-          <button class="tituloboton">COMPRAR</button>
+          <button class="tituloboton" data-nombre="ESPADA DE DIAMANTE" data-precio="200">COMPRAR</button>
         </div>
-
-
-
       </div>
 
       <div class="articulo">
         <img src="./IMG/deserteagle.jpeg" class="articulos-fotos" alt="">
         <h2 class="nombreart">DESERT EAGLE (CSGO)</h2>
-
+        <p class="precioart">$666</p>
         <div class="botoncompra">
-          <button class="tituloboton">COMPRAR</button>
+          <button class="tituloboton" data-nombre="DESERT EAGLE (CSGO)" data-precio="666">COMPRAR</button>
         </div>
-
-
-
-
       </div>
 
     </div>
@@ -89,7 +89,9 @@
           <img src="./IMG/la-roca.gif" alt="GIF 2" class="footer-gif gif2">
       </div>
   </footer>
-
+  
     <script src="./JS/main.js"></script>
+    
+    
 </body>
 </html>

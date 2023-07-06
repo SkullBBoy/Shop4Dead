@@ -138,6 +138,7 @@ footer {
   margin: 0 10px;
   border-radius: 25px;
   overflow: hidden;
+  position: relative;
 }
 
 #articulos {
@@ -175,4 +176,10 @@ footer {
   color: red;
   background-color: rgb(20, 20, 20);
   cursor: pointer;
+}
+
+.precioart {
+  color: white;
+  text-align: center;
+  margin: auto;
 }
