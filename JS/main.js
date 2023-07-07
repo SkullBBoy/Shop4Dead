@@ -14,6 +14,12 @@ function mostrarCantidadArticulos() {
   contadorArticulos.textContent = carrito.length.toString();
 }
 
+const formularioCarga = document.querySelector('.formularioCarga');
+const btnCargarArticulo = document.getElementById('btnCargarArticulo');
+btnCargarArticulo.addEventListener('click', () => {
+  formularioCarga.classList.toggle('visible');
+});
+
 function mostrarProductosEnCarrito() {
   const contenedorProductos = document.getElementById('productos-carrito');
   contenedorProductos.innerHTML = '';
@@ -77,8 +83,6 @@ const botonComprar = document.getElementById('btn-comprar').addEventListener('cl
 const botonBorrar = document.getElementById('btn-borrar').addEventListener('click', vaciarCarrito);
 
   
-
-
 mostrarCantidadArticulos();
 mostrarProductosEnCarrito();
 
