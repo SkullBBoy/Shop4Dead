@@ -5,7 +5,7 @@ if (carritoLocalStorage) {
   carrito = JSON.parse(carritoLocalStorage);
 }
 
-function guardarCarritoEnLocalStorage() {
+function guardarCarritoEnStorage() {
   localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
@@ -17,13 +17,6 @@ function mostrarCantidadArticulos() {
 function mostrarProductosEnCarrito() {
   const contenedorProductos = document.getElementById('productos-carrito');
   contenedorProductos.innerHTML = '';
-
-  if (carrito.length === 0) {
-    const mensajeCarritoVacio = document.createElement('p');
-    mensajeCarritoVacio.textContent = 'No hay productos en el carrito';
-    mensajeCarritoVacio.classList.add('mensaje-vacio');
-    contenedorProductos.appendChild(mensajeCarritoVacio);
-  } else {
     carrito.forEach((producto) => {
       const productoDiv = document.createElement('div');
       productoDiv.classList.add('producto-carrito');
@@ -34,8 +27,8 @@ function mostrarProductosEnCarrito() {
       productoDiv.appendChild(nombreProducto);
       productoDiv.appendChild(precioProducto);
       contenedorProductos.appendChild(productoDiv);
-    });
-  }
+    }
+    );
 }
 
 function agregarAlCarrito(event) {
@@ -47,7 +40,7 @@ function agregarAlCarrito(event) {
   };
   carrito.push(producto);
   alert(`Se agregó "${nombre}" al carrito`);
-  guardarCarritoEnLocalStorage();
+  guardarCarritoEnStorage();
   mostrarCantidadArticulos();
   mostrarProductosEnCarrito();
 }
@@ -62,18 +55,32 @@ function comprar() {
   } else {
     alert('Compra realizada con éxito');
     carrito = [];
-    guardarCarritoEnLocalStorage();
+    guardarCarritoEnStorage();
     mostrarCantidadArticulos();
     mostrarProductosEnCarrito();
   }
 }
 
-const botonComprar = document.getElementById('btn-comprar');
-if (botonComprar) {
-  botonComprar.addEventListener('click', comprar);
+function vaciarCarrito() {
+  if (carrito.length === 0) {
+    alert('No hay productos en el carrito');
+  } else {
+    carrito = [];
+    guardarCarritoEnStorage();
+    mostrarCantidadArticulos();
+    mostrarProductosEnCarrito();
+  }
 }
+
+
+const botonComprar = document.getElementById('btn-comprar').addEventListener('click', comprar);
+const botonBorrar = document.getElementById('btn-borrar').addEventListener('click', vaciarCarrito);
+
+  
+
+
 
 mostrarCantidadArticulos();
 mostrarProductosEnCarrito();
 
-window.addEventListener('beforeunload', guardarCarritoEnLocalStorage);
+window.addEventListener('beforeunload', guardarCarritoEnStorage);
