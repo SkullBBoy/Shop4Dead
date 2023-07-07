@@ -14,12 +14,6 @@ function mostrarCantidadArticulos() {
   contadorArticulos.textContent = carrito.length.toString();
 }
 
-const formularioCarga = document.querySelector('.formularioCarga');
-const btnCargarArticulo = document.getElementById('btnCargarArticulo');
-btnCargarArticulo.addEventListener('click', () => {
-  formularioCarga.classList.toggle('visible');
-});
-
 function mostrarProductosEnCarrito() {
   const contenedorProductos = document.getElementById('productos-carrito');
   contenedorProductos.innerHTML = '';
@@ -79,10 +73,26 @@ function vaciarCarrito() {
 }
 
 
-const botonComprar = document.getElementById('btn-comprar').addEventListener('click', comprar);
-const botonBorrar = document.getElementById('btn-borrar').addEventListener('click', vaciarCarrito);
+const btnCargarArticulo = document.getElementById('btnCargarArticulo');
+const formularioCarga = document.querySelector('.formularioCarga');
+const botonComprar = document.getElementById('btn-comprar');
+const botonBorrar = document.getElementById('btn-borrar')
 
-  
+if(btnCargarArticulo){
+  btnCargarArticulo.addEventListener('click', () => {
+    formularioCarga.classList.toggle('visible');
+  });
+}
+
+
+if (botonComprar) {
+  botonComprar.addEventListener('click', comprar);
+}
+
+if (botonBorrar) {
+  botonBorrar.addEventListener('click', vaciarCarrito);
+}
+
 mostrarCantidadArticulos();
 mostrarProductosEnCarrito();
 
