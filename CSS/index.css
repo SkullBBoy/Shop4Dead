@@ -139,12 +139,15 @@ footer {
   border-radius: 25px;
   overflow: hidden;
   position: relative;
+  margin-bottom: 20px;
 }
 
 #articulos {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   margin-top: 25px;
+  margin-bottom: 40px;
 }
 
 .articulos-fotos {
@@ -155,9 +158,17 @@ footer {
   border: 2px solid #333;
 }
 
+.precioart {
+  color: white;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
 .nombreart{
   color: white;
   text-align: center;
+  font-size: 23.5px;
+  margin-bottom: 10px;
 }
 
 .botoncompra{
@@ -178,11 +189,7 @@ footer {
   cursor: pointer;
 }
 
-.precioart {
-  color: white;
-  text-align: center;
-  margin: auto;
-}
+
 
 #btnCargarArticulo{
   background-color: #333;
