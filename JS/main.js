@@ -79,7 +79,6 @@ const botonBorrar = document.getElementById('btn-borrar').addEventListener('clic
   
 
 
-
 mostrarCantidadArticulos();
 mostrarProductosEnCarrito();
 

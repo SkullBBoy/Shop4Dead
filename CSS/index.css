@@ -183,3 +183,34 @@ footer {
   text-align: center;
   margin: auto;
 }
+
+#btnCargarArticulo{
+  background-color: #333;
+  border-radius: 25px;
+  color: white;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+
+.formularioCarga{
+  background-color: #333;
+  border-radius: 25px;
+  padding: 10px;
+  /* margin-top: 10px; */
+  /*display: none;*/
+  
+}
+
+.formularioCarga label{
+  color: white;
+}
+
+.formularioCarga button{
+  background-color: #333;
+  color: white;
+}
+
+#precioArticulo,#nombreArticulo{
+width: 50px;
+}
