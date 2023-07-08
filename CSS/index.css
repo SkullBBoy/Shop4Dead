@@ -146,7 +146,7 @@ footer {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 25px;
+  margin-top: 10px;
   margin-bottom: 40px;
 }
 
@@ -193,13 +193,31 @@ footer {
 
 #btnCargarArticulo{
   background-color: #333;
-  border-radius: 25px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-right: none;
   color: white;
   font-size: 15px;
-  margin-top: 10px;
 }
 
+#btnBorrarArticulos{
+  background-color: #333;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-left: none;
+  color: white;
+  font-size: 15px;
+}
 
+#botonesForm{
+  background-color: #333;
+  border-radius: 25px;
+  color: white;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
 
 
 .formularioCarga{
