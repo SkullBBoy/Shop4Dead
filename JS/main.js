@@ -45,13 +45,6 @@ async function mostrarHoraArticulo() {
   }
 }
 
-
-
-
-
-
-
-
 function verificarUsuario(){
 
   if(tipoUsuario){
@@ -96,10 +89,8 @@ function verificarUsuario(){
   }
   else{
     localStorage.setItem("user", "0")
+    location.reload()
   }
-
-
-  
 }
 
 function guardarCarritoEnStorage() {
@@ -126,11 +117,9 @@ function mostrarProductosEnCarrito() {
       nombreProducto.textContent = producto.nombre;
       const precioProducto = document.createElement('p');
       precioProducto.classList.add('precioProducto');
-
       precioProducto.textContent = `$${producto.precio}`;
       const horaProducto = document.createElement("p");
       horaProducto.classList.add('horaAñadido');
-
       horaProducto.textContent = `Añadido a las: ${producto.hora}`;
       productoDiv.appendChild(nombreProducto);
       productoDiv.appendChild(precioProducto);
@@ -180,7 +169,7 @@ async function agregarAlCarrito(event) {
     hora,
   };
   carrito.push(producto);
-  alert(`Se agregó "${nombre}" al carrito        |        Hora: "${hora}"`); 
+  alert(`Se agregó "${nombre}" al carrito         |        Hora: ${hora}`); 
   guardarCarritoEnStorage();
   mostrarCantidadArticulos();
   mostrarProductosEnCarrito();
