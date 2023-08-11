@@ -43,7 +43,7 @@ ul {
   border-bottom-left-radius: 25px;
 }
 
-#lastItem {
+#horaActual {
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
 }
@@ -154,9 +154,19 @@ footer {
   border: 2px solid #333;
 }
 
-.nombreart{
+#nombreart{
   color: white;
   text-align: center;
+}
+
+#btnCerrar{
+  margin-top: 30px;
+  margin:auto;
+  border: none;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: white;
+  font-size: 1.2rem;
 }
 
 .botoncompra{
@@ -180,7 +190,8 @@ footer {
 .form-login{
   font-size: 1.5rem;
   margin: auto;
-  margin-top: 5%;
+  margin-top: 2.5%;
+  margin-bottom: 7%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -188,7 +199,7 @@ footer {
   background-color: #333;
   padding: 100px;
   border-radius: 25px;
-  gap: 10px;
+  gap: 15px;
 }
 
 .form-login button{
@@ -209,4 +220,35 @@ footer {
   border: none;
   border-radius: 0px;
   background-color: rgb(238, 238, 238);
+}
+
+#btnCerrar {
+  margin: auto;
+  margin-top: 11%;
+  align-items: center; 
+  justify-content: center; 
+  border: none;
+  border-radius: 25px;
+  padding: 15px;
+  color: white;
+  background-color: #333;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+#btnCerrar:hover {
+  background-color: #444;
+}
+
+
+
+
+#botonesForm{
+  background-color: #333;
+  border-radius: 25px;
+  color: white;
+  margin-top: 10px;
+ 
+  justify-content: center;
+  margin-bottom: 5px;
 }

@@ -3,13 +3,103 @@ let carrito = [];
 let articulosCreados = [];
 const carritoLocalStorage = localStorage.getItem('carrito');
 const articulosCreadosLocalStorage = localStorage.getItem('articulosCreados');
+const btnsForm = document.getElementById("botonesForm");
+const btnGuardarArticulo = document.getElementById('btnGuardarArticulo');
+const btnCargarArticulo = document.getElementById('btnCargarArticulo');
+const formularioCarga = document.querySelector('.formularioCarga');
+const botonComprar = document.getElementById('btn-comprar');
+const botonBorrar = document.getElementById('btn-borrar')
+const btnBorrarArticulos = document.getElementById('btnBorrarArticulos');
+const btnIniciar = document.getElementById("btnIniciar");
+const btnCerrar = document.getElementById("btnCerrar");
+const formLogin = document.getElementsByClassName("form-login")[0];
+const tipoUsuario = localStorage.getItem("user");
+const elementoHora = document.getElementById("horaActual");
 
-if (carritoLocalStorage) {
-  carrito = JSON.parse(carritoLocalStorage);
+
+function mostrarHoraActual() {
+  fetch("http://worldtimeapi.org/api/ip")
+    .then(response => response.json())
+    .then(data => {
+      const ahora = new Date(data.datetime);
+      const hora = ahora.getHours();
+      const minutos = ahora.getMinutes();
+  
+      elementoHora.textContent = `Hora: ${hora}:${minutos}`;
+    })
+    .catch(error => {
+      console.log("Error: " + error)
+    });
 }
 
-if (articulosCreadosLocalStorage) {
-  articulosCreados = JSON.parse(articulosCreadosLocalStorage);
+async function mostrarHoraArticulo() { 
+  try {
+    const response = await fetch("http://worldtimeapi.org/api/ip");
+    const data = await response.json(); 
+    const ahora = new Date(data.datetime);
+    const hora = ahora.getHours();
+    const minutos = ahora.getMinutes();
+    return `${hora}:${minutos}`;
+  } catch (error) {
+    console.log("Error: " + error);
+  }
+}
+
+
+
+
+
+
+
+
+function verificarUsuario(){
+
+  if(tipoUsuario){
+    if(tipoUsuario === "1"){
+      
+      if(formLogin){
+        formLogin.style.display = "none";
+      
+      }
+      
+      if(btnCerrar){
+        btnCerrar.style.display= "flex";
+      }
+      
+
+      if(btnsForm){
+        btnsForm.style.display = "flex";
+      }
+      
+      
+      
+    }
+    else{
+
+      if(btnsForm){
+        btnsForm.style.display = "none";
+      }
+
+      if(btnCerrar){
+        btnCerrar.style.display = "none";
+
+      }
+
+      if(formLogin){
+        formLogin.style.display = "flex";
+      }
+      
+      
+      
+  
+    }
+  }
+  else{
+    localStorage.setItem("user", "0")
+  }
+
+
+  
 }
 
 function guardarCarritoEnStorage() {
@@ -35,9 +125,16 @@ function mostrarProductosEnCarrito() {
       const nombreProducto = document.createElement('h3');
       nombreProducto.textContent = producto.nombre;
       const precioProducto = document.createElement('p');
+      precioProducto.classList.add('precioProducto');
+
       precioProducto.textContent = `$${producto.precio}`;
+      const horaProducto = document.createElement("p");
+      horaProducto.classList.add('horaAñadido');
+
+      horaProducto.textContent = `Añadido a las: ${producto.hora}`;
       productoDiv.appendChild(nombreProducto);
       productoDiv.appendChild(precioProducto);
+      productoDiv.appendChild(horaProducto);
       contenedorProductos.appendChild(productoDiv);
     }
     );
@@ -73,20 +170,25 @@ function mostrarArticulosEnTienda() {
     contenedorArticulos.appendChild(articuloDiv);
   });
 }
-
-function agregarAlCarrito(event) {
+async function agregarAlCarrito(event) {
   const nombre = event.target.dataset.nombre;
   const precio = Number(event.target.dataset.precio);
+  const hora = await mostrarHoraArticulo(); 
   const producto = {
     nombre,
     precio,
+    hora,
   };
   carrito.push(producto);
-  alert(`Se agregó "${nombre}" al carrito`);
+  alert(`Se agregó "${nombre}" al carrito        |        Hora: "${hora}"`); 
   guardarCarritoEnStorage();
   mostrarCantidadArticulos();
   mostrarProductosEnCarrito();
 }
+
+botonesCompra.forEach((boton) => {
+  boton.addEventListener('click', agregarAlCarrito);
+});
 
 botonesCompra.forEach((boton) => {
   boton.addEventListener('click', agregarAlCarrito);
@@ -106,7 +208,7 @@ function comprar() {
 
 function vaciarCarrito() {
   if (carrito.length === 0) {
-    alert('No hay productos en el carrito');
+    alert('No hay articulos en el carrito');
   } else {
     carrito = [];
     guardarCarritoEnStorage();
@@ -126,12 +228,13 @@ function borrarArticulosCreados() {
   }
 }
 
+if (carritoLocalStorage) {
+  carrito = JSON.parse(carritoLocalStorage);
+}
 
-const btnCargarArticulo = document.getElementById('btnCargarArticulo');
-const formularioCarga = document.querySelector('.formularioCarga');
-const botonComprar = document.getElementById('btn-comprar');
-const botonBorrar = document.getElementById('btn-borrar')
-const btnBorrarArticulos = document.getElementById('btnBorrarArticulos');
+if (articulosCreadosLocalStorage) {
+  articulosCreados = JSON.parse(articulosCreadosLocalStorage);
+}
 
 if(btnCargarArticulo){
   btnCargarArticulo.addEventListener('click', () => {
@@ -150,17 +253,6 @@ if (botonComprar) {
 if (botonBorrar) {
   botonBorrar.addEventListener('click', vaciarCarrito);
 }
-
-
-mostrarCantidadArticulos();
-setTimeout(() => {
-  mostrarProductosEnCarrito();
-}, 2);
-mostrarArticulosEnTienda();
-
-
-
-const btnGuardarArticulo = document.getElementById('btnGuardarArticulo');
 
 if (btnGuardarArticulo) {
   btnGuardarArticulo.addEventListener('click', () => {
@@ -187,5 +279,48 @@ if (btnGuardarArticulo) {
   });
 }
 
+
+
+if(btnIniciar){
+  btnIniciar.addEventListener('click', () => {
+    const usuario = document.getElementById('user').value;
+    const password = document.getElementById("password").value;
+    
+
+    if(usuario && password){
+      if(usuario === "admin" & password === "123"){
+      localStorage.setItem("user", 1);
+      }
+      else{
+        alert("Login Incorrecto. Intentelo Nuevamente")
+      }
+      location.reload();
+      document.getElementById('user').value = '';
+      document.getElementById('password').value = '';
+    }
+    else{
+      alert('Completá los datos solicitados.');
+    }
+
+  });
+}
+
+
+if(btnCerrar){
+  btnCerrar.addEventListener('click', () => {
+ localStorage.setItem("user","0")
+ verificarUsuario();
+ location.reload();
+  });
+}
+
+mostrarHoraActual();
+verificarUsuario();
+mostrarCantidadArticulos();
+setTimeout(() => {
+  mostrarProductosEnCarrito();
+}, 2);
+mostrarArticulosEnTienda();
+setInterval(mostrarHoraActual, 1000);
 
 window.addEventListener('beforeunload', guardarCarritoEnStorage);

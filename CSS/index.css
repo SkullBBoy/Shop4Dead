@@ -27,6 +27,10 @@ ul {
   float: left;
 }
 
+.item:nth-child(3):hover{
+background-color: #333;
+}
+
 .item a {
   display: block;
   color: white;
@@ -43,7 +47,7 @@ ul {
   border-bottom-left-radius: 25px;
 }
 
-#lastItem {
+#horaActual {
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
 }
@@ -175,6 +179,7 @@ footer {
   text-align: center;
 }
 
+
 .tituloboton{
   color: red;
   background-color: black;
@@ -198,6 +203,7 @@ footer {
   border-right: none;
   color: white;
   font-size: 15px;
+  cursor: pointer;
 }
 
 #btnBorrarArticulos{
@@ -207,6 +213,7 @@ footer {
   border-left: none;
   color: white;
   font-size: 15px;
+  cursor: pointer;
 }
 
 #botonesForm{
@@ -217,6 +224,7 @@ footer {
   display: flex;
   justify-content: center;
   margin-bottom: 5px;
+  
 }
 
 
@@ -238,6 +246,12 @@ footer {
 .formularioCarga button{
   background-color: #333;
   color: white;
+  cursor: pointer;
+}
+
+.formularioCarga button:hover{
+  background-color: #444;
+ 
 }
 
 #precioArticulo,#nombreArticulo{

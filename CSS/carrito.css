@@ -43,10 +43,12 @@ ul {
   border-bottom-left-radius: 25px;
 }
 
-#lastItem {
+#horaActual {
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
+-bottom-right-radius: 25px;
 }
+
 
 #titulo {
   background-color: #333;
@@ -180,14 +182,20 @@ footer {
 
 .producto-carrito h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: 25px;
   color: white;
 }
 
-.producto-carrito p {
+.precioProducto {
   margin: 5px 0;
-  font-size: 18px;
+  font-size: 25px;
   color: green;
+}
+
+.horaAñadido{
+  margin: 5px 0;
+  font-size: 15px;
+  color: white;
 }
 
 #btn-comprar {
